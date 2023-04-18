@@ -14,6 +14,13 @@
 <img alt="Issues" src="https://img.shields.io/github/issues/phant80m/nvim?style=for-the-badge&logo=bilibili&color=F5E0DC&logoColor=D9E0EE&labelColor=302D41" />
 </a>
 </div>
+
+### one command install 
+---
+
+```bash
+    curl -sSL https://raw.githubusercontent.com/Phant80m/nvim/main/install.sh | bash
+```
 <details><summary>Preview</summary><blockquote>
 <h1> Preview </h1>
 
@@ -21,3 +28,5 @@
 ![](https://github.com/Phant80m/nvim/blob/main/img/2.png?raw=true)
 ![](https://github.com/Phant80m/nvim/blob/main/img/3.png?raw=true)
 </div>
+    
+
