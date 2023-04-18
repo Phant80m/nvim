@@ -1,6 +1,5 @@
 require("main.remap")
 require("main.packer")
-require("main.startup.themes.evil")
 -- system clipboard
 vim.api.nvim_set_keymap('n', '<c-c>', '"+y', { noremap = true })
 vim.api.nvim_set_keymap('v', '<c-c>', '"+y', { noremap = true })

@@ -3,109 +3,101 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		'wbthomason/packer.nvim'
 	}
-	use{'nyoom-engineering/oxocarbon.nvim'}
+
+	-- Fuzzy finder
+	use {
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.1', -- Specify a particular version tag
+		-- or branch = '0.1.x',
+		requires = { {'nvim-lua/plenary.nvim'} } -- Dependency
+	}
+
+	-- Colorscheme
+	use {'nyoom-engineering/oxocarbon.nvim'}
 	-- vim.opt.background = "dark" -- set this to dark or light
 	-- vim.cmd.colorscheme "oxocarbon"
 
+	-- Syntax highlighting
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+
+	-- Quickly navigate between project files
 	use('ThePrimeagen/harpoon')
+
+	-- Visualize undo tree
 	use('mbbill/undotree')
+
+	-- LSP support
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
 		requires = {
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},             -- Required
-			{'williamboman/mason.nvim'},           -- Optional
-			{'williamboman/mason-lspconfig.nvim'}, -- Optional
+			-- Required dependencies
+			{'neovim/nvim-lspconfig'},
+			-- Optional dependencies
+			{'williamboman/mason.nvim'},
+			{'williamboman/mason-lspconfig.nvim'},
 
 			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},         -- Required
-			{'hrsh7th/cmp-nvim-lsp'},     -- Required
-			{'hrsh7th/cmp-buffer'},       -- Optional
-			{'hrsh7th/cmp-path'},         -- Optional
-			{'saadparwaiz1/cmp_luasnip'}, -- Optional
-			{'hrsh7th/cmp-nvim-lua'},     -- Optional
+			{'hrsh7th/nvim-cmp'},
+			{'hrsh7th/cmp-nvim-lsp'},
+			{'hrsh7th/cmp-buffer'},
+			{'hrsh7th/cmp-path'},
+			{'saadparwaiz1/cmp_luasnip'},
+			{'hrsh7th/cmp-nvim-lua'},
 
 			-- Snippets
-			{'L3MON4D3/LuaSnip'},             -- Required
-			{'rafamadriz/friendly-snippets'}, -- Optional
+			{'L3MON4D3/LuaSnip'},
+			{'rafamadriz/friendly-snippets'},
 		}
-	}	
+	}
+
+	-- Statusline
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
+
+	-- Cheatsheet
 	use {
 		'sudormrfbin/cheatsheet.nvim',
-
 		requires = {
 			{'nvim-telescope/telescope.nvim'},
 			{'nvim-lua/popup.nvim'},
 			{'nvim-lua/plenary.nvim'},
 		}
 	}
-	use 'nvim-tree/nvim-web-devicons'
-	use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}	
 
+	-- File explorer
+	use 'nvim-tree/nvim-web-devicons'
+	use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 	use 'nvim-tree/nvim-tree.lua'
 
+	-- Additional LSP support
 	use {'hrsh7th/cmp-nvim-lsp'}
+
+	-- Colorize hex codes, etc. in code
 	use {'norcalli/nvim-colorizer.lua'}
-	use { "catppuccin/nvim", as = "catppuccin" }
+
+	-- Colorscheme
+	use {
+		"catppuccin/nvim",
+		as = "catppuccin"
+	}
 	require("catppuccin").setup({
 		flavour = "mocha", -- latte, frappe, macchiato, mocha
-		background = { -- :h background
-		light = "latte",
-		dark = "mocha",
-	},
-	transparent_background = false,
-	show_end_of_buffer = false, -- show the '~' characters after the end of buffers
-	term_colors = false,
-	dim_inactive = {
-		enabled = false,
-		shade = "dark",
-		percentage = 0.15,
-	},
-	no_italic = false, -- Force no italic
-	no_bold = false, -- Force no bold
-	styles = {
-		comments = { "italic" },
-		conditionals = { "italic" },
-		loops = {},
-		functions = {},
-		keywords = {},
-		strings = {},
-		variables = {},
-		numbers = {},
-		booleans = {},
-		properties = {},
-		types = {},
-		operators = {},
-	},
-	color_overrides = {},
-	custom_highlights = {},
-	integrations = {
-		cmp = true,
-		gitsigns = true,
-		nvimtree = true,
-		telescope = true,
-		notify = false,
-		mini = false,
-		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-	},
-})
+	})
 
+	-- Mason file generator
 	use {
 		"williamboman/mason.nvim",
-		run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+		run = ":MasonUpdate" -- Update registry contents
 	}
+
+	-- Tetris game
+
 	use {
 		'alec-gibson/nvim-tetris'
 	}
@@ -113,14 +105,10 @@ return require('packer').startup(function(use)
 	use {
 		"startup-nvim/startup.nvim",
 		requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-		config = function()
-			require"startup".setup()
-		end
 	}
-
-
-
+	-- live server for html 
 	use {'aurum77/live-server.nvim'}
+
 	-- Set colorscheme after options
 	vim.cmd('colorscheme catppuccin')
 end)
