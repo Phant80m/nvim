@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
 			-- Snippets
 			{'L3MON4D3/LuaSnip'},
 			{'rafamadriz/friendly-snippets'},
+		--	{'https://git.sr.ht/~whynothugo/lsp_lines.nvim'},
 		}
 	}
 
@@ -105,10 +106,35 @@ return require('packer').startup(function(use)
 	use {
 		"startup-nvim/startup.nvim",
 		requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+		config = function()
+			require("startup").setup({theme = "dashboard"}) -- put theme name here
+		end
 	}
+	-- lsp lsp_lines
+	use({
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+		end,
+	})
 	-- live server for html 
 	use {'aurum77/live-server.nvim'}
-
 	-- Set colorscheme after options
 	vim.cmd('colorscheme catppuccin')
+	
+
+	-- show variables on the top of files
+	use({
+		"utilyre/barbecue.nvim",
+		tag = "*",
+		requires = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		after = "nvim-web-devicons", -- keep this if you're using NvChad
+		config = function()
+			require("barbecue").setup()
+		end,
+	})
+	use "lukas-reineke/indent-blankline.nvim"
 end)
