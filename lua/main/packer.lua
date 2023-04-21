@@ -48,6 +48,10 @@ return require('packer').startup(function(use)
 			{'saadparwaiz1/cmp_luasnip'},
 			{'hrsh7th/cmp-nvim-lua'},
 
+			-- rust
+			{'simrat39/rust-tools.nvim'},
+			{'mfussenegger/nvim-dap'},
+
 			-- Snippets
 			{'L3MON4D3/LuaSnip'},
 			{'rafamadriz/friendly-snippets'},
@@ -107,16 +111,16 @@ return require('packer').startup(function(use)
 		"startup-nvim/startup.nvim",
 		requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
 		config = function()
-			require("startup").setup({theme = "dashboard"}) -- put theme name here
+			require"startup".setup(require"main.startup_nvim")
 		end
 	}
 	-- lsp lsp_lines
-	use({
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		config = function()
-			require("lsp_lines").setup()
-		end,
-	})
+	-- use({
+	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+	-- 	config = function()
+	-- 		require("lsp_lines").setup()
+	-- 	end,
+	-- })
 	-- live server for html 
 	use {'aurum77/live-server.nvim'}
 	-- Set colorscheme after options
@@ -137,4 +141,6 @@ return require('packer').startup(function(use)
 		end,
 	})
 	use "lukas-reineke/indent-blankline.nvim"
+
+	use "tpope/vim-commentary"
 end)

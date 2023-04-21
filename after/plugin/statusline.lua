@@ -2,8 +2,12 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    section_separators = { left = '', right = ''},
-    component_separators = { left = '', right = ''},
+    -- section_separators = { left = '', right = ''},
+    -- component_separators = { left = '', right = ''},
+    -- component_separators = { left = '', right = ''},
+    -- section_separators = { left = '', right = ''},
+    component_separators = { left = ' ', right = ' '},
+    section_separators = { left = ' ', right = ' '},
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -38,3 +42,13 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {}
 }
+
+local nerdtree = require('lualine.extensions.nerdtree')
+
+local M = {}
+
+M.sections = vim.deepcopy(nerdtree.sections)
+
+M.filetypes = { 'NvimTree' }
+
+return M
